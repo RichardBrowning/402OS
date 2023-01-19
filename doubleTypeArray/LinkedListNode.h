@@ -8,6 +8,7 @@ class linkedListNode
         linkedListNode* next;
         linkedListNode* prev;
     public:
+        linkedListNode();
         linkedListNode(int data);
         ~linkedListNode();
         int getData();

@@ -8,6 +8,14 @@ LinkedListedNode::LinkedListedNode()
     prev = NULL;
 }
 
+
+LinkedListedNode::LinkedListedNode(double data)
+{
+    data = 0;
+    next = NULL;
+    prev = NULL;
+}
+
 LinkedListedNode::~LinkedListedNode()
 {
     delete next;

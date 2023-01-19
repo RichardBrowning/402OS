@@ -5,6 +5,7 @@
 class doubleTypeArray
 {
     private:
+    
         linkedListNode* head;
     public:
         doubleTypeArray(int size);
