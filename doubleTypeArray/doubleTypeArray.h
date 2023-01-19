@@ -1,17 +1,17 @@
 #ifndef DOUBLE_T_A_H
 #define DOUBLE_T_A_H
+#include "linkedListNode.h"
 
 class doubleTypeArray
 {
     private:
-        double *a;
-        int size;
+        linkedListNode* head;
     public:
         doubleTypeArray(int size);
         ~doubleTypeArray();
-        double& operator[](int i);
-        doubleTypeArray& operator=(const doubleTypeArray& rhs);
-        doubleTypeArray(const doubleTypeArray& rhs);
+        int get(int index);
+        void set(int index, int value);
+        void print();
 };
 
 #endif
