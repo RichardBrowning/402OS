@@ -13,5 +13,6 @@ rand-normal.o: rand-normal.h rand-normal.cpp
 doubleTypeArray.o: doubleTypeArray.h doubleTypeArray.cpp
 
 linkedList.o: doubleTypeArray.h doubleTypeArray.cpp
+
 clean: 
 	$(RM) main *.o *~
