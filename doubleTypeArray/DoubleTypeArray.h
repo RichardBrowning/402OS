@@ -1,6 +1,7 @@
 #ifndef DOUBLE_T_A_H
 #define DOUBLE_T_A_H
-#include "linkedListNode.h"
+
+#include "LinkedListNode.h"
 
 class doubleTypeArray
 {

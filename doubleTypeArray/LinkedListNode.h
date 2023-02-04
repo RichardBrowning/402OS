@@ -1,21 +1,21 @@
 #ifndef LINKED_LIST_NODE_H
 #define LINKED_LIST_NODE_H
 
-class linkedListNode
+class LinkedListNode
 {
     private:
         int data;
-        linkedListNode* next;
-        linkedListNode* prev;
+        LinkedListNode* next;
+        LinkedListNode* prev;
     public:
-        linkedListNode();
-        linkedListNode(int data);
-        ~linkedListNode();
+        LinkedListNode();
+        LinkedListNode(int data);
+        ~LinkedListNode();
         int getData();
-        linkedListNode* getNext();
-        linkedListNode* getPrev();
-        void setNext(linkedListNode* next);
-        void setPrev(linkedListNode* prev);
+        LinkedListNode* getNext();
+        LinkedListNode* getPrev();
+        void setNext(LinkedListNode* next);
+        void setPrev(LinkedListNode* prev);
 };
 
 #endif

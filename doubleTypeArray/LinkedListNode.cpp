@@ -1,6 +1,7 @@
 #include <iostream>
-#include "LinkedListNode.h"
 #include <math.h>
+
+#include "LinkedListNode.h"
 
 LinkedListedNode::LinkedListedNode()
 {
