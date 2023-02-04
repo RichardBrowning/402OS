@@ -2,17 +2,21 @@
 CC = g++
 # compiler flags:
 CFLAGS  = -g -Wall -std=c++11
+RM = rm -f
 
-
-main: main.o rand-normal.o doubleTypeArray.o 
-	$(CC) $(CFLAGS) -o main main.o rand-normal.o doubleTypeArray.o 
-main.o: main.cpp rand-normal.h doubleTypeArray.h
-
-rand-normal.o: rand-normal.h rand-normal.cpp
-
-doubleTypeArray.o: doubleTypeArray.h doubleTypeArray.cpp
-
-linkedList.o: doubleTypeArray.h doubleTypeArray.cpp
-
+main: main.o rand-normal.o doubleTypeArray.o linkedListNode.o
+	$(CC) $(CFLAGS) main.o rand-normal.o doubleTypeArray.o -o main 
+main.o: main.cpp doubleTypeArray.h linkedListNode.h
+	$(CC) $(CFLAGS) -c main.cpp
+doubleTypeArray.o: doubleTypeArray.h
+	$(CC) $(CFLAGS) -c doubleTypeArray.cpp
+linkedListNode.o: linkedListNode.h
+	$(CC) $(CFLAGS) -c linkedListNode.cpp
+rand-normal.o: rand-normal.cpp
+	$(CC) $(CFLAGS) -c rand-normal.cpp
+run: main
+	./main
 clean: 
 	$(RM) main *.o *~
+valgrind: horseRace
+	valgrind --leak-check:full ./horseRace
