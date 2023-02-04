@@ -1,4 +1,5 @@
 #include <iostream>
+#include "LinkedListNode.h"
 #include <math.h>
 
 LinkedListedNode::LinkedListedNode()
