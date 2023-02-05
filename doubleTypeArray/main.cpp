@@ -1,7 +1,7 @@
 #include <iostream>
 #include <math.h>
 #include <stdlib.h>
-#include "rand-normal.cpp"
+#include "rand-normal.h"
 
 int main()
 {

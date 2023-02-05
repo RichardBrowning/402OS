@@ -5,7 +5,7 @@ CFLAGS  = -g -Wall -std=c++11
 RM = rm -f
 
 main: main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o
-	$(CC) $(CFLAGS) main.o rand-normal.o DoubleTypeArray.o -o main 
+	$(CC) $(CFLAGS) main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o -o main 
 main.o: main.cpp DoubleTypeArray.h LinkedListNode.h
 	$(CC) $(CFLAGS) -c main.cpp
 DoubleTypeArray.o: DoubleTypeArray.cpp DoubleTypeArray.h
