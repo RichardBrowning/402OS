@@ -1,56 +1,55 @@
-#include <iostream>
-#include "doubleTypeArray.h"
-#include "linkedListNode.h"
+#include "DoubleTypeArray.h"
+#include "LinkedListNode.h"
 
-doubleTypeArray::doubleTypeArray(int size)
+DoubleTypeArray::DoubleTypeArray(int size)
 {
-    head = new linkedListNode();
-    linkedListNode* current = head;
+    head = new LinkedListNode();
+    LinkedListNode* current = head;
     for (int i = 0; i < size - 1; i++)
     {
-        current->next = new linkedListNode();
-        current = current->next;
+        current->setNext(new LinkedListNode());
+        current = current->getNext();
     }
 }
 
-doubleTypeArray::~doubleTypeArray()
+DoubleTypeArray::~DoubleTypeArray()
 {
-    linkedListNode* current = head;
+    LinkedListNode* current = head;
     while (current != NULL)
     {
-        linkedListNode* next = current->next;
+        LinkedListNode* next = current->getNext();
         delete current;
         current = next;
     }
 }
 
-int doubleTypeArray::get(int index)
+int DoubleTypeArray::get(int index)
 {
-    linkedListNode* current = head;
+    LinkedListNode* current = head;
     for (int i = 0; i < index; i++)
     {
-        current = current->next;
+        current = current->getNext();
     }
     return current->getData();
 }
 
-void doubleTypeArray::set(int index, int value)
+void DoubleTypeArray::set(int index, int value)
 {
-    linkedListNode* current = head;
+    LinkedListNode* current = head;
     for (int i = 0; i < index; i++)
     {
-        current = current->next;
+        current = current->getNext();
     }
     current->setData(value);
 }
 
-void doubleTypeArray::print()
+void DoubleTypeArray::print()
 {
-    linkedListNode* current = head;
+    LinkedListNode* current = head;
     while (current != NULL)
     {
         std::cout << current->getData() << std::endl;
-        current = current->next;
+        current = current->getNext();
     }
 }
 

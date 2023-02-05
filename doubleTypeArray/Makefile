@@ -4,14 +4,14 @@ CC = g++
 CFLAGS  = -g -Wall -std=c++11
 RM = rm -f
 
-main: main.o rand-normal.o doubleTypeArray.o linkedListNode.o
-	$(CC) $(CFLAGS) main.o rand-normal.o doubleTypeArray.o -o main 
-main.o: main.cpp doubleTypeArray.h linkedListNode.h
+main: main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o
+	$(CC) $(CFLAGS) main.o rand-normal.o DoubleTypeArray.o -o main 
+main.o: main.cpp DoubleTypeArray.h LinkedListNode.h
 	$(CC) $(CFLAGS) -c main.cpp
-doubleTypeArray.o: doubleTypeArray.cpp doubleTypeArray.h
-	$(CC) $(CFLAGS) -c doubleTypeArray.cpp
-linkedListNode.o: linkedListNode.cpp linkedListNode.h
-	$(CC) $(CFLAGS) -c linkedListNode.cpp
+DoubleTypeArray.o: DoubleTypeArray.cpp DoubleTypeArray.h
+	$(CC) $(CFLAGS) -c DoubleTypeArray.cpp
+LinkedListNode.o: LinkedListNode.cpp LinkedListNode.h
+	$(CC) $(CFLAGS) -c LinkedListNode.cpp
 rand-normal.o: rand-normal.cpp
 	$(CC) $(CFLAGS) -c rand-normal.cpp
 run: main

@@ -1,55 +1,53 @@
-#include <iostream>
 #include <math.h>
 
 #include "LinkedListNode.h"
 
-LinkedListedNode::LinkedListedNode()
+LinkedListNode::LinkedListNode()
 {
     data = 0;
     next = NULL;
     prev = NULL;
 }
 
-
-LinkedListedNode::LinkedListedNode(double data)
+LinkedListNode::LinkedListNode(double data)
 {
     data = 0;
     next = NULL;
     prev = NULL;
 }
 
-LinkedListedNode::~LinkedListedNode()
+LinkedListNode::~LinkedListNode()
 {
     delete next;
     delete prev;
 }
 
-int LinkedListedNode::getData()
+int LinkedListNode::getData()
 {
     return data;
 }
 
-LinkedListedNode* LinkedListedNode::getNext()
+LinkedListNode* LinkedListNode::getNext()
 {
     return next;
 }
 
-void LinkedListedNode::setData(int data)
+void LinkedListNode::setData(double data)
 {
     this->data = data;
 }
 
-void LinkedListedNode::setNext(LinkedListedNode* next)
+void LinkedListNode::setNext(LinkedListNode* next)
 {
     this->next = next;
 }
 
-LinkedListedNode* LinkedListedNode::getPrev()
+LinkedListNode* LinkedListNode::getPrev()
 {
     return prev;
 }
 
-void LinkedListedNode::setPrev(LinkedListedNode* prev)
+void LinkedListNode::setPrev(LinkedListNode* prev)
 {
     this->prev = prev;
 }
