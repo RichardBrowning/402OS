@@ -12,8 +12,8 @@ else
    endif
 endif
 
-main: main.o OSCheck.o rand-normal.o DoubleTypeArray.o LinkedListNode.o
-	$(CC) $(CFLAGS) main.o OSCheck.o rand-normal.o DoubleTypeArray.o LinkedListNode.o -o main 
+main: main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o
+	$(CC) $(CFLAGS) main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o -o main 
 main.o: main.cpp DoubleTypeArray.h LinkedListNode.h
 	$(CC) $(CFLAGS) -c main.cpp
 DoubleTypeArray.o: DoubleTypeArray.cpp DoubleTypeArray.h
@@ -22,8 +22,7 @@ LinkedListNode.o: LinkedListNode.cpp LinkedListNode.h
 	$(CC) $(CFLAGS) -c LinkedListNode.cpp
 rand-normal.o: rand-normal.cpp
 	$(CC) $(CFLAGS) -c rand-normal.cpp
-OSCheck.o: OSCheck.cpp OSCheck.h
-	$(CC) $(CFLAGS) -c OSCheck.cpp
+
 run: main
 	./main
 clean: 
