@@ -11,7 +11,7 @@ LinkedListNode::LinkedListNode()
 
 LinkedListNode::LinkedListNode(double data)
 {
-    data = 0;
+    this->data = data;
     next = NULL;
     prev = NULL;
 }
@@ -22,7 +22,7 @@ LinkedListNode::~LinkedListNode()
     delete prev;
 }
 
-int LinkedListNode::getData()
+double LinkedListNode::getData()
 {
     return data;
 }

@@ -1,13 +1,16 @@
 #include "DoubleTypeArray.h"
 #include "LinkedListNode.h"
 
+#include "rand-normal.h"
+
 DoubleTypeArray::DoubleTypeArray(int size)
 {
     head = new LinkedListNode();
     LinkedListNode* current = head;
     for (int i = 0; i < size - 1; i++)
     {
-        current->setNext(new LinkedListNode());
+        /** randomize the data of each node*/
+        current->setNext(new LinkedListNode(rand_normal(0, 1)));
         current = current->getNext();
     }
 }
@@ -23,7 +26,7 @@ DoubleTypeArray::~DoubleTypeArray()
     }
 }
 
-int DoubleTypeArray::get(int index)
+double DoubleTypeArray::getAt(int index)
 {
     LinkedListNode* current = head;
     for (int i = 0; i < index; i++)
@@ -33,7 +36,7 @@ int DoubleTypeArray::get(int index)
     return current->getData();
 }
 
-void DoubleTypeArray::set(int index, int value)
+void DoubleTypeArray::setAt(int index, double value)
 {
     LinkedListNode* current = head;
     for (int i = 0; i < index; i++)

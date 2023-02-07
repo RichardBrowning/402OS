@@ -14,7 +14,7 @@ class LinkedListNode
         LinkedListNode();
         LinkedListNode(double data);
         ~LinkedListNode();
-        int getData();
+        double getData();
         void setData(double data);
         LinkedListNode* getNext();
         void setNext(LinkedListNode* next);

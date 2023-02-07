@@ -10,8 +10,8 @@ class DoubleTypeArray
     public:
         DoubleTypeArray(int size);
         ~DoubleTypeArray();
-        int get(int index);
-        void set(int index, int value);
+        double getAt(int index);
+        void setAt(int index, double value);
         void print();
 };
 

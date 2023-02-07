@@ -13,7 +13,11 @@ else
 endif
 
 main: main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o
-	$(CC) $(CFLAGS) main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o -o main 
+	if $(CC) $(CFLAGS) main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o -o main; then \
+		echo Success; \
+	else \
+		echo Compilation Error; \
+	fi
 main.o: main.cpp DoubleTypeArray.h LinkedListNode.h
 	$(CC) $(CFLAGS) -c main.cpp
 DoubleTypeArray.o: DoubleTypeArray.cpp DoubleTypeArray.h
