@@ -12,8 +12,8 @@ double rand_normal(double mean, double dev)
 	}
 
 	do {
-		px = UNIT_RAND() * 2.0 - 1.0; /* random b/w [-1,1) */
-		py = UNIT_RAND() * 2.0 - 1.0; 
+		px = UNIT_RAND_WIN() * 2.0 - 1.0; /* random b/w [-1,1) */
+		py = UNIT_RAND_WIN() * 2.0 - 1.0; 
 		d2 = px * px + py * py;
 	} while (d2 == 0.0 || d2 > 1.0); // find a random point in a unit circle
 	
