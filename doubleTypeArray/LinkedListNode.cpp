@@ -4,7 +4,7 @@
 
 LinkedListNode::LinkedListNode()
 {
-    data = 0;
+    this->data = 0;
     next = NULL;
     prev = NULL;
 }

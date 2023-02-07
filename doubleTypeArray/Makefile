@@ -13,11 +13,7 @@ else
 endif
 
 main: main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o
-	if $(CC) $(CFLAGS) main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o -o main; then \
-		echo Success; \
-	else \
-		echo Compilation Error; \
-	fi
+	$(CC) $(CFLAGS) main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o -o main.out
 main.o: main.cpp DoubleTypeArray.h LinkedListNode.h
 	$(CC) $(CFLAGS) -c main.cpp
 DoubleTypeArray.o: DoubleTypeArray.cpp DoubleTypeArray.h
@@ -28,8 +24,8 @@ rand-normal.o: rand-normal.cpp
 	$(CC) $(CFLAGS) -c rand-normal.cpp
 
 run: main
-	./main
+	./main.out
 clean: 
-	$(RM) main *.o *.exe *~
+	$(RM) main.out *.o *.exe *~
 valgrind: horseRace
-	valgrind --leak-check:full ./main
+	valgrind --leak-check:full ./main.out

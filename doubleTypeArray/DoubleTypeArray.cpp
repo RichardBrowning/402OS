@@ -5,7 +5,7 @@
 
 DoubleTypeArray::DoubleTypeArray(int size)
 {
-    head = new LinkedListNode();
+    head = new LinkedListNode(rand_normal(0, 1));
     LinkedListNode* current = head;
     for (int i = 0; i < size - 1; i++)
     {
@@ -13,6 +13,12 @@ DoubleTypeArray::DoubleTypeArray(int size)
         current->setNext(new LinkedListNode(rand_normal(0, 1)));
         current = current->getNext();
     }
+}
+
+//polymorphism: create with only the head, WARNING: head is null
+DoubleTypeArray::DoubleTypeArray()
+{
+    head = NULL;
 }
 
 DoubleTypeArray::~DoubleTypeArray()
@@ -24,6 +30,11 @@ DoubleTypeArray::~DoubleTypeArray()
         delete current;
         current = next;
     }
+}
+
+LinkedListNode* DoubleTypeArray::getHead()
+{
+    return head;
 }
 
 double DoubleTypeArray::getAt(int index)
@@ -56,6 +67,18 @@ void DoubleTypeArray::print()
     }
 }
 
-
-
-
+bool DoubleTypeArray::checkIfConsensus()
+{
+    //if is initially empty
+    if(head == NULL) return false;
+    /** traverse */
+    LinkedListNode* current = head;
+    while (current->getNext() != NULL){
+        /**if data of this one != data of next one*/
+        if( current->getData() != current->getNext()->getData() )
+            /** is not conse */
+            return false;
+        /** keep traversing to next */
+        current = current->getNext();
+    }
+}

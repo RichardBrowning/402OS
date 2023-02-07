@@ -8,11 +8,14 @@ class DoubleTypeArray
     private:
         LinkedListNode* head;
     public:
+        DoubleTypeArray();
         DoubleTypeArray(int size);
         ~DoubleTypeArray();
+        LinkedListNode* getHead();
         double getAt(int index);
         void setAt(int index, double value);
         void print();
+        bool checkIfConsensus();
 };
 
 #endif
