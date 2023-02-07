@@ -2,10 +2,8 @@
 
 std::string getOsName()
 {
-    #ifdef _WIN32
-    return "Windows 32-bit";
-    #elif _WIN64
-    return "Windows 64-bit";
+    #ifdef _WIN64 || _WIN32
+    return "Windows";
     #elif __APPLE__ || __MACH__
     return "Mac OSX";
     #elif __linux__

@@ -13,7 +13,7 @@ else
 endif
 
 main: main.o OSCheck.o rand-normal.o DoubleTypeArray.o LinkedListNode.o
-	$(CC) $(CFLAGS) main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o -o main 
+	$(CC) $(CFLAGS) main.o OSCheck.o rand-normal.o DoubleTypeArray.o LinkedListNode.o -o main 
 main.o: main.cpp DoubleTypeArray.h LinkedListNode.h
 	$(CC) $(CFLAGS) -c main.cpp
 DoubleTypeArray.o: DoubleTypeArray.cpp DoubleTypeArray.h
@@ -27,6 +27,6 @@ OSCheck.o: OSCheck.cpp OSCheck.h
 run: main
 	./main
 clean: 
-	$(RM) main *.o *~
+	$(RM) main *.o *.exe *~
 valgrind: horseRace
 	valgrind --leak-check:full ./main
