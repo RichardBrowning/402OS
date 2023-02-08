@@ -12,7 +12,7 @@ class DoubleTypeArray
         DoubleTypeArray(int size);
         ~DoubleTypeArray();
         LinkedListNode* getHead();
-        void append(LinkedListNode* newNode);
+        void append(double data);
         double getAt(int index);
         void setAt(int index, double value);
         void print();

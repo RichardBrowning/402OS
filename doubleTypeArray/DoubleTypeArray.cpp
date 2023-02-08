@@ -36,17 +36,21 @@ LinkedListNode* DoubleTypeArray::getHead()
 {
     return head;
 }
-void DoubleTypeArray::append(LinkedListNode* newNode){
+
+void DoubleTypeArray::append(double data){
     LinkedListNode* current = head;
     //until the last one has no next
-    while (current->getNext() != NULL)
+    while (true)
     {
+        if (current->getNext() == NULL)
+        {
+            break;
+        }
         current = current->getNext();
     }
     //set the next node as the incoming parameter
-    current->setNext(newNode);
+    current->setNext(new LinkedListNode(data));
 }
-
 
 double DoubleTypeArray::getAt(int index)
 {

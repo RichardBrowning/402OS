@@ -66,10 +66,14 @@ DoubleTypeArray* consensusize(DoubleTypeArray* prevArray){
             double newK = (k1 + k2 + k) / 3;
             std::cout << "k1: " << k1 << " + k2: " << k2 << " + k: " << k << " = " << newK << std::endl;
             //the average value append to the new array
-            newArray->append(new LinkedListNode(newK));
+            std::cout << "appending here" << std::endl;
+            newArray->append(newK);
+            std::cout << "appended" << std::endl;
             /**index ++ */
             current = current->getNext();
         }
+        std::cout << "newArray: " << std::endl;
+        newArray->print();
         /** check consensus */
         if (newArray->length() == 0){
             //if yes, break while
