@@ -8,7 +8,7 @@
 
 #define ARRAY_SIZE 30
 
-DoubleTypeArray* consensusize();
+DoubleTypeArray* consensusize(DoubleTypeArray* prevArray);
 
 int main()
 {
@@ -20,10 +20,9 @@ int main()
 
     /** init array*/
     DoubleTypeArray* DTArray = new DoubleTypeArray(ARRAY_SIZE);
-    DTArray->print();
+    DTArray->print();//debug line
     
     /** recurse */
-
 
     /** clean up */
     delete DTArray;

@@ -18,8 +18,8 @@ LinkedListNode::LinkedListNode(double data)
 
 LinkedListNode::~LinkedListNode()
 {
-    delete next;
-    delete prev;
+    // delete next;
+    // delete prev;
 }
 
 double LinkedListNode::getData()
