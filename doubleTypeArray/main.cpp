@@ -21,6 +21,10 @@ int main()
     /** recurse */
     DoubleTypeArray* consensus = consensusize(DTArray);
 
+    /** print result */
+    std::cout << "consensused value: " << std::endl;
+    consensus->print();
+
     /** clean up */
     delete DTArray;
     return 0;
@@ -64,18 +68,14 @@ DoubleTypeArray* consensusize(DoubleTypeArray* prevArray){
             //求平均值
             //(k1+k2+k)/3
             double newK = (k1 + k2 + k) / 3;
-            std::cout << "k1: " << k1 << " + k2: " << k2 << " + k: " << k << " = " << newK << std::endl;
             //the average value append to the new array
-            std::cout << "appending here" << std::endl;
             newArray->append(newK);
-            std::cout << "appended" << std::endl;
             /**index ++ */
             current = current->getNext();
         }
-        std::cout << "newArray: " << std::endl;
-        newArray->print();
+
         /** check consensus */
-        if (newArray->length() == 0){
+        if (newArray->length() == 1){
             //if yes, break while
             return newArray;
         }

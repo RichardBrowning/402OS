@@ -38,17 +38,18 @@ LinkedListNode* DoubleTypeArray::getHead()
 }
 
 void DoubleTypeArray::append(double data){
+    //if head is null
+    if (head == NULL){
+        //std::cout << "head is null" << std::endl;//debug line
+        head = new LinkedListNode(data);
+        return;
+    }
     LinkedListNode* current = head;
-    //until the last one has no next
-    while (true)
-    {
-        if (current->getNext() == NULL)
-        {
-            break;
-        }
+    // //until the last one has no next
+    while (current->getNext() != NULL){
         current = current->getNext();
     }
-    //set the next node as the incoming parameter
+    //set the next node with the incoming parameter as data
     current->setNext(new LinkedListNode(data));
 }
 
