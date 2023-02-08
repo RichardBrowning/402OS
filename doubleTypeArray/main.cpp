@@ -39,8 +39,8 @@ DoubleTypeArray* consensusize(DoubleTypeArray* prevArray){
             /*k*/
             double k = current->getData();
             /*k+1*/
-            double k1;
-            double k2;
+            double k1 = 0.0;
+            double k2 = 0.0;
             //if *K+1 not null
             if (current->getNext() != NULL){
                 //increament index by 1: k+1
