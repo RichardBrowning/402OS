@@ -81,4 +81,5 @@ bool DoubleTypeArray::checkIfConsensus()
         /** keep traversing to next */
         current = current->getNext();
     }
+    return true;
 }

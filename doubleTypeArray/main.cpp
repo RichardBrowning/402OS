@@ -37,7 +37,7 @@ DoubleTypeArray* consensusize(DoubleTypeArray* prevArray){
     //set current to the prev array's head
     LinkedListNode* current = prevArray->getHead();
     //get the next one to the head
-    LinkedListNode* current = current->getNext();
+    current = current->getNext();
         /*while the prev->current is not null*/
         {
             /** get consensus */
