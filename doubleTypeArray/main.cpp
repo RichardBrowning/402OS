@@ -35,17 +35,30 @@ DoubleTypeArray* consensusize(DoubleTypeArray* prevArray){
     DoubleTypeArray* newArray = new DoubleTypeArray();
     //set current to the prev array's head
     LinkedListNode* current = prevArray->getHead();
-    //get the next one to the head
-    current = current->getNext();
+
         /*while the prev->current is not null*/
         while (current != NULL)
         {
             /** get consensus */
-            //k-1 
-            double k1 = current->getPrev()->getData();
-            //k data at current
+            //k
             double k = current->getData();
-            /*k+1*/
+            /*k+2*/
+            //increament index by 1
+            current = current->getNext();
+            //if *K+1 not null, get data
+            //else if null, put 0
+            double k1;
+            if (current->getNext() != NULL)
+            {
+                k1 = current->getNext()->getData();
+            }
+            else
+            {
+                k1 = 0;
+            }
+            /*k+2*/
+            //increament index by 1
+            current = current->getNext();
             //if *K+1 not null, get data
             //else if null, put 0
             double k2;
@@ -64,24 +77,7 @@ DoubleTypeArray* consensusize(DoubleTypeArray* prevArray){
             //the average value append to the new array
             newArray->append(new LinkedListNode(newK));
             /**index ++ */
-            //if already the last one
-            if (current->getNext() == NULL){
-                break;
-            }
-            current = current->getNext();
             
-            //if the second is the last one 
-            if (current->getNext() == NULL){
-                break;
-            }
-            current = current->getNext();
-            //if the third one is the last one, meaning next triple only has one element
-            if(current->getNext() == NULL){
-                //add that one to new array
-                newArray->append(new LinkedListNode(current->getData()));
-                //and break
-                break;
-            }
         }
     /** check consensus */
             //if yes, break while
