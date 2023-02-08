@@ -78,19 +78,31 @@ void DoubleTypeArray::print()
     }
 }
 
-bool DoubleTypeArray::checkIfConsensus()
+int DoubleTypeArray::length()
 {
-    //if is initially empty
-    if(head == NULL) return false;
-    /** traverse */
+    int length = 0;
     LinkedListNode* current = head;
-    while (current->getNext() != NULL){
-        /**if data of this one != data of next one*/
-        if( current->getData() != current->getNext()->getData() )
-            /** is not conse */
-            return false;
-        /** keep traversing to next */
+    while (current != NULL)
+    {
+        length++;
         current = current->getNext();
     }
-    return true;
+    return length;
 }
+
+// bool DoubleTypeArray::checkIfConsensus()
+// {
+//     //if is initially empty
+//     if(head == NULL) return false;
+//     /** traverse */
+//     LinkedListNode* current = head;
+//     while (current->getNext() != NULL){
+//         /**if data of this one != data of next one*/
+//         if( current->getData() != current->getNext()->getData() )
+//             /** is not conse */
+//             return false;
+//         /** keep traversing to next */
+//         current = current->getNext();
+//     }
+//     return true;
+// }

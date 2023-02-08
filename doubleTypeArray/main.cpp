@@ -13,16 +13,13 @@ DoubleTypeArray* consensusize(DoubleTypeArray* prevArray);
 int main()
 {
     srand(time(NULL));
-    // for (int i = 0; i < 10; i++)
-    // {
-    //     std::cout << rand_normal(0, 1) << std::endl;
-    // }
 
     /** init array*/
     DoubleTypeArray* DTArray = new DoubleTypeArray(ARRAY_SIZE);
-    DTArray->print();//debug line
-    
+    //DTArray->print();//debug line
+
     /** recurse */
+    DoubleTypeArray* consensus = consensusize(DTArray);
 
     /** clean up */
     delete DTArray;
@@ -35,53 +32,51 @@ DoubleTypeArray* consensusize(DoubleTypeArray* prevArray){
     DoubleTypeArray* newArray = new DoubleTypeArray();
     //set current to the prev array's head
     LinkedListNode* current = prevArray->getHead();
-
         /*while the prev->current is not null*/
         while (current != NULL)
         {
             /** get consensus */
-            //k
+            /*k*/
             double k = current->getData();
-            /*k+2*/
-            //increament index by 1
-            current = current->getNext();
-            //if *K+1 not null, get data
-            //else if null, put 0
+            /*k+1*/
             double k1;
-            if (current->getNext() != NULL)
-            {
-                k1 = current->getNext()->getData();
-            }
-            else
-            {
-                k1 = 0;
-            }
-            /*k+2*/
-            //increament index by 1
-            current = current->getNext();
-            //if *K+1 not null, get data
-            //else if null, put 0
             double k2;
-            if (current->getNext() != NULL)
-            {
-                k2 = current->getNext()->getData();
+            //if *K+1 not null
+            if (current->getNext() != NULL){
+                //increament index by 1: k+1
+                current = current->getNext();
+                //get node k+1 data
+                k1 = current->getData();
+                //BASED on this, if k+2 is not null
+                if (current->getNext() != NULL){
+                    //increament index by 1: k+2
+                    current = current->getNext();
+                    //get node k+2 data
+                    k2 = current->getData();
+                }
             }
-            else
-            {
+            //if *K+1 is null, natually k+2 is null as well
+            else{
+                k1 = 0;
                 k2 = 0;
             }
-            
+
             //求平均值
             //(k1+k2+k)/3
             double newK = (k1 + k2 + k) / 3;
+            std::cout << "k1: " << k1 << " + k2: " << k2 << " + k: " << k << " = " << newK << std::endl;
             //the average value append to the new array
             newArray->append(new LinkedListNode(newK));
             /**index ++ */
-            
+            current = current->getNext();
         }
-    /** check consensus */
+        /** check consensus */
+        if (newArray->length() == 0){
             //if yes, break while
-
+            return newArray;
+        }
+        else{
             //else, call self
-    return newArray;
+            return consensusize(newArray);
+        }
 }
