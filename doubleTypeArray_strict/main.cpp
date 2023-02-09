@@ -5,7 +5,7 @@
 #include "DoubleTypeArray.h"
 #include "rand-normal.h"
 
-#define ARRAY_SIZE 30
+#define ARRAY_SIZE 9
 
 DoubleTypeArray* consensusize(DoubleTypeArray* prevArray);
 
@@ -19,16 +19,14 @@ int main()
     /** init array*/
     DoubleTypeArray* DTArray = new DoubleTypeArray(ARRAY_SIZE);
     //print the array
-    DTArray->print();
-
     /** recurse */
-    // DoubleTypeArray* consensus = consensusize(DTArray);
+    DoubleTypeArray* consensus = consensusize(DTArray);
 
-    // /** print result */
-    // std::cout << "consensused value: " << std::endl;
-    // consensus->print();
-    // //consensus time
-    // std::cout << "consensus time: " << counter << std::endl;
+    /** print result */
+    std::cout << "consensused value: " << std::endl;
+    consensus->print();
+    //consensus time
+    std::cout << "consensus time: " << counter << std::endl;
     /** clean up */
     delete DTArray;
     return 0;
@@ -55,15 +53,16 @@ DoubleTypeArray* consensusize(DoubleTypeArray* prevArray){
             //the average value append to the new array
             newArray->append(newK);
             /**index ++ */
+            current = current->getNext();
         }
-
+        //return newArray;
         /** check consensus */
-        // if (newArray->length() == 1){
-        //     //if yes, break while
-        //     return newArray;
-        // }
-        // else{
-        //     //else, call self
-        //     return consensusize(newArray);
-        // }
+        if (newArray->checkIfConsensus()){
+            //if yes, break while
+            return newArray;
+        }
+        else{
+            //else, call self
+            return consensusize(newArray);
+        }
 }

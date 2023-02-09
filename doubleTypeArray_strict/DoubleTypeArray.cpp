@@ -31,7 +31,6 @@ DoubleTypeArray::DoubleTypeArray(int size)
 DoubleTypeArray::DoubleTypeArray()
 {
     head = NULL;
-    head->setNext(head);
 }
 
 DoubleTypeArray::~DoubleTypeArray()
@@ -101,10 +100,12 @@ void DoubleTypeArray::setAt(int index, double value)
 
 void DoubleTypeArray::print()
 {
+    int counter = 0;
     //set current to head's next
     LinkedListNode* current = head->getNext();
     while (current != head)
     {
+        counter++;
         std::cout << current->getData() << std::endl;
         current = current->getNext();
     }
@@ -132,14 +133,16 @@ bool DoubleTypeArray::checkIfConsensus()
     //if is initially empty
     if(head == NULL) return false;
     /** traverse */
-    LinkedListNode* current = head;
-    do {
+    int data = head->getData();
+    LinkedListNode* current = head -> getNext();
+    while (current != head) {
         /**if data of this one != data of next one*/
-        if( current->getData() != current->getNext()->getData() )
+        if( current->getData() != data )
             /** is not conse */
             return false;
         /** keep traversing to next */
         current = current->getNext();
-    } while (current->getNext() != head);
+    }
+    //if all data are the same
     return true;
 }
