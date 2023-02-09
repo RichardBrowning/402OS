@@ -133,11 +133,10 @@ bool DoubleTypeArray::checkIfConsensus()
     //if is initially empty
     if(head == NULL) return false;
     /** traverse */
-    int data = head->getData();
     LinkedListNode* current = head -> getNext();
     while (current != head) {
         /**if data of this one != data of next one*/
-        if( current->getData() != data )
+        if( std::abs(current->getData()-current->getNext()->getData())>0.0001 )
             /** is not conse */
             return false;
         /** keep traversing to next */

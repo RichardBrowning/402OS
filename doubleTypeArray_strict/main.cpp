@@ -5,7 +5,7 @@
 #include "DoubleTypeArray.h"
 #include "rand-normal.h"
 
-#define ARRAY_SIZE 3
+#define ARRAY_SIZE 30
 
 DoubleTypeArray* consensusize(DoubleTypeArray* prevArray);
 
@@ -47,7 +47,6 @@ DoubleTypeArray* consensusize(DoubleTypeArray* prevArray){
             double k1 = current->getNext()->getData();
             //get the previous node's data
             double k2 = current->getPrev()->getData();
-            //求平均值
             //(k1+k2+k)/3
             double newK = (k1 + k2 + k) / 3;
             //the average value append to the new array
