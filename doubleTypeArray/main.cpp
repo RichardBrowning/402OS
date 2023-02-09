@@ -4,44 +4,38 @@
 #include "LinkedListNode.h"
 #include "DoubleTypeArray.h"
 #include "rand-normal.h"
-#include "TimeInterval.h"
+//#include "TimeInterval.h"
 
-
-#define ARRAY_SIZE 300000
+#define ARRAY_SIZE 10000
 
 DoubleTypeArray* consensusize(DoubleTypeArray* prevArray);
+
+//global counter
+int counter = 0;
 
 int main()
 {
     srand(time(NULL));
-    /** create timer*/
-    TimeInterval timer = TimeInterval(); 
 
     /** init array*/
     DoubleTypeArray* DTArray = new DoubleTypeArray(ARRAY_SIZE);
-    //DTArray->print();//debug line
 
     /** recurse */
     DoubleTypeArray* consensus = consensusize(DTArray);
 
     /** print result */
-    //start timing
-    timer.start();
     std::cout << "consensused value: " << std::endl;
-    //end timing 
-    timer.stop();
     consensus->print();
-    //indicate time used
-    std::cout << "Time Taken: " << timer.GetInterval() << " micro-seconds"<< std::endl;
-
+    //consensus time
+    std::cout << "consensus time: " << counter << std::endl;
     /** clean up */
     delete DTArray;
     return 0;
 }
 
 DoubleTypeArray* consensusize(DoubleTypeArray* prevArray){
-    /** consensusize */
-        //create new array
+    counter += 1;
+    //create new array
     DoubleTypeArray* newArray = new DoubleTypeArray();
     //set current to the prev array's head
     LinkedListNode* current = prevArray->getHead();
