@@ -2,15 +2,16 @@
 CC = g++
 # compiler flags:
 CFLAGS  = -g -Wall -std=c++11
-ifdef OS
-   RM = del /Q
-   FixPath = $(subst /,\,$1)
-else
-   ifeq ($(shell uname), Linux)
-      RM = rm -f
-      FixPath = $1
-   endif
-endif
+# ifdef OS
+#    RM = del /Q
+#    FixPath = $(subst /,\,$1)
+# else
+#    ifeq ($(shell uname), Linux)
+#       RM = rm -f
+#       FixPath = $1
+#    endif
+# endif
+RM = rm -f
 
 main: main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o 
 	$(CC) $(CFLAGS) main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o -o main
