@@ -5,31 +5,50 @@
 
 DoubleTypeArray::DoubleTypeArray(int size)
 {
+    // randomly generate the data of the head
     head = new LinkedListNode(rand_normal(0, 1));
+    //set current node to head
     LinkedListNode* current = head;
+    //loop through the rest of the nodes
     for (int i = 0; i < size - 1; i++)
     {
         /** randomize the data of each node*/
         current->setNext(new LinkedListNode(rand_normal(0, 1)));
-        current = current->getNext();
+        //set next to be current's next
+        LinkedListNode* next = current->getNext();
+        //set current to be next's prev
+        next->setPrev(current);
+        //set current to be next
+        current = next;
     }
+    //link the last node -> next to the head
+    current->setNext(head);
+    //link the head -> prev to the last node
+    head->setPrev(current);
 }
 
 //polymorphism: create with only the head, WARNING: head is null
 DoubleTypeArray::DoubleTypeArray()
 {
     head = NULL;
+    head->setNext(head);
 }
 
 DoubleTypeArray::~DoubleTypeArray()
 {
-    LinkedListNode* current = head;
-    while (current != NULL)
+    //set current to head
+    LinkedListNode* current = head -> getNext();
+    //
+    while (current != head)
     {
+        //set next to be current's next
         LinkedListNode* next = current->getNext();
+        //delete current
         delete current;
+        //make next current
         current = next;
     }
+    delete head;
 }
 
 LinkedListNode* DoubleTypeArray::getHead()
@@ -42,15 +61,22 @@ void DoubleTypeArray::append(double data){
     if (head == NULL){
         //std::cout << "head is null" << std::endl;//debug line
         head = new LinkedListNode(data);
+        head->setNext(head);
+        head->setPrev(head);
         return;
     }
-    LinkedListNode* current = head;
-    // //until the last one has no next
-    while (current->getNext() != NULL){
-        current = current->getNext();
-    }
-    //set the next node with the incoming parameter as data
-    current->setNext(new LinkedListNode(data));
+
+    LinkedListNode* tail = head -> getPrev();
+    //create a new node
+    LinkedListNode* newNode = new LinkedListNode(data);
+    // tail's next is the new node
+    tail->setNext(newNode);
+    // head's prev is the new node
+    head->setPrev(newNode);
+    //set the next node with the head
+    newNode->setNext(head);
+    //set the prev node with the tail
+    newNode->setPrev(tail);
 }
 
 double DoubleTypeArray::getAt(int index)
@@ -75,8 +101,9 @@ void DoubleTypeArray::setAt(int index, double value)
 
 void DoubleTypeArray::print()
 {
-    LinkedListNode* current = head;
-    while (current != NULL)
+    //set current to head's next
+    LinkedListNode* current = head->getNext();
+    while (current != head)
     {
         std::cout << current->getData() << std::endl;
         current = current->getNext();
@@ -85,9 +112,14 @@ void DoubleTypeArray::print()
 
 int DoubleTypeArray::length()
 {
-    int length = 0;
-    LinkedListNode* current = head;
-    while (current != NULL)
+    //initial length is 1 (head)
+    int length = 1;
+    //@deprecate if is initially empty
+    // if(head == NULL) return length;
+    //assign head to current, increament one
+    LinkedListNode* current = head->getNext();
+    //if not reached head yet
+    while (current != head)
     {
         length++;
         current = current->getNext();
@@ -95,19 +127,19 @@ int DoubleTypeArray::length()
     return length;
 }
 
-// bool DoubleTypeArray::checkIfConsensus()
-// {
-//     //if is initially empty
-//     if(head == NULL) return false;
-//     /** traverse */
-//     LinkedListNode* current = head;
-//     while (current->getNext() != NULL){
-//         /**if data of this one != data of next one*/
-//         if( current->getData() != current->getNext()->getData() )
-//             /** is not conse */
-//             return false;
-//         /** keep traversing to next */
-//         current = current->getNext();
-//     }
-//     return true;
-// }
+bool DoubleTypeArray::checkIfConsensus()
+{
+    //if is initially empty
+    if(head == NULL) return false;
+    /** traverse */
+    LinkedListNode* current = head;
+    do {
+        /**if data of this one != data of next one*/
+        if( current->getData() != current->getNext()->getData() )
+            /** is not conse */
+            return false;
+        /** keep traversing to next */
+        current = current->getNext();
+    } while (current->getNext() != head);
+    return true;
+}

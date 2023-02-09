@@ -17,7 +17,7 @@ class DoubleTypeArray
         void setAt(int index, double value);
         void print();
         int length();
-        //bool checkIfConsensus();
+        bool checkIfConsensus();
 };
 
 #endif

@@ -9,6 +9,7 @@ class LinkedListNode
     private:
         double data;
         LinkedListNode* next;
+        LinkedListNode* prev;
     public:
         LinkedListNode();
         LinkedListNode(double data);
@@ -17,6 +18,8 @@ class LinkedListNode
         void setData(double data);
         LinkedListNode* getNext();
         void setNext(LinkedListNode* next);
+        LinkedListNode* getPrev();
+        void setPrev(LinkedListNode* prev);
 };
 
 #endif

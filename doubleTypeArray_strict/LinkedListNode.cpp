@@ -17,6 +17,7 @@ LinkedListNode::LinkedListNode(double data)
 LinkedListNode::~LinkedListNode()
 {
     // delete next;
+    // delete prev;
 }
 
 double LinkedListNode::getData()
@@ -37,4 +38,14 @@ void LinkedListNode::setData(double data)
 void LinkedListNode::setNext(LinkedListNode* next)
 {
     this->next = next;
+}
+
+void LinkedListNode::setPrev(LinkedListNode* prev)
+{
+    this->prev = prev;
+}
+
+LinkedListNode* LinkedListNode::getPrev()
+{
+    return prev;
 }
