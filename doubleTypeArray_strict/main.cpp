@@ -5,7 +5,7 @@
 #include "DoubleTypeArray.h"
 #include "rand-normal.h"
 
-#define ARRAY_SIZE 9
+#define ARRAY_SIZE 3
 
 DoubleTypeArray* consensusize(DoubleTypeArray* prevArray);
 
