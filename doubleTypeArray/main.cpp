@@ -4,7 +4,6 @@
 #include "LinkedListNode.h"
 #include "DoubleTypeArray.h"
 #include "rand-normal.h"
-//#include "TimeInterval.h"
 
 #define ARRAY_SIZE 300
 
