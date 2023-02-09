@@ -6,7 +6,7 @@
 #include "rand-normal.h"
 //#include "TimeInterval.h"
 
-#define ARRAY_SIZE 10000
+#define ARRAY_SIZE 300
 
 DoubleTypeArray* consensusize(DoubleTypeArray* prevArray);
 
