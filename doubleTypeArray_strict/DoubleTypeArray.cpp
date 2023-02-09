@@ -1,6 +1,7 @@
+#include <iomanip>
+
 #include "DoubleTypeArray.h"
 #include "LinkedListNode.h"
-
 #include "rand-normal.h"
 
 DoubleTypeArray::DoubleTypeArray(int size)
@@ -106,7 +107,7 @@ void DoubleTypeArray::print()
     while (current != head)
     {
         counter++;
-        std::cout << current->getData() << std::endl;
+        std::cout << std::setprecision(5) << current->getData() << std::endl;
         current = current->getNext();
     }
 }
@@ -136,7 +137,7 @@ bool DoubleTypeArray::checkIfConsensus()
     LinkedListNode* current = head -> getNext();
     while (current != head) {
         /**if data of this one != data of next one*/
-        if( std::abs(current->getData()-current->getNext()->getData())>0.0001 )
+        if( std::abs(current->getData()-current->getNext()->getData()) > 0.0000001 )
             /** is not conse */
             return false;
         /** keep traversing to next */

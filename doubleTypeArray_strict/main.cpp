@@ -1,6 +1,6 @@
 #include <iostream>
-#include <math.h>
-#include <time.h>
+#include <iomanip>
+
 #include "LinkedListNode.h"
 #include "DoubleTypeArray.h"
 #include "rand-normal.h"
@@ -21,10 +21,10 @@ int main()
     //print the array
     /** recurse */
     DoubleTypeArray* consensus = consensusize(DTArray);
-
+    // consensus->print();//debug function
     /** print result */
     std::cout << "consensused value: " << std::endl;
-    consensus->print();
+    std::cout << std::setprecision(5) << consensus->getHead()->getData() << std::endl;
     //consensus time
     std::cout << "consensus time: " << counter << std::endl;
     /** clean up */
