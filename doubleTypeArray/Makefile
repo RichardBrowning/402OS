@@ -12,9 +12,9 @@ else
    endif
 endif
 
-main: main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o
+main: main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o 
 	$(CC) $(CFLAGS) main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o -o main
-main.o: main.cpp DoubleTypeArray.h LinkedListNode.h
+main.o: main.cpp DoubleTypeArray.h LinkedListNode.h TimeInterval.h
 	$(CC) $(CFLAGS) -c main.cpp
 DoubleTypeArray.o: DoubleTypeArray.cpp DoubleTypeArray.h
 	$(CC) $(CFLAGS) -c DoubleTypeArray.cpp
@@ -22,6 +22,8 @@ LinkedListNode.o: LinkedListNode.cpp LinkedListNode.h
 	$(CC) $(CFLAGS) -c LinkedListNode.cpp
 rand-normal.o: rand-normal.cpp
 	$(CC) $(CFLAGS) -c rand-normal.cpp
+# timeInterval.o: TimeInterval.h
+# $(CC) $(CFLAGS) -c TimeInterval.h
 
 run: main
 	./main
