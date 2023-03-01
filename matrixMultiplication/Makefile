@@ -5,6 +5,7 @@ CFLAGS  = -pthread -g -Wall -std=c++11
 
 RM = rm -f
 
+all: main
 main: main.o matrix.o
 	$(CC) $(CFLAGS) main.o matrix.o -o main
 main.o: main.cpp matrix.h

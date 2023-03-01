@@ -54,6 +54,7 @@ int main(void){
     for (int i = 0; i < NUM_THREADS; i++){
         ths[i].join();
     }
+    //end of multi-threaded matrix multiplication
 
     //print matrix result
     print2d("resulting matrix", result, MATRIX_SIZE, MATRIX_SIZE);

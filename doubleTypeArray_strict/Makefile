@@ -13,6 +13,7 @@ CFLAGS  = -g -Wall -std=c++11
 # endif
 RM = rm -f
 
+all: main
 main: main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o 
 	$(CC) $(CFLAGS) main.o rand-normal.o DoubleTypeArray.o LinkedListNode.o -o main
 main.o: main.cpp DoubleTypeArray.h LinkedListNode.h
