@@ -8,7 +8,8 @@
 #include "matrix.h"
 
 #define MATRIX_SIZE 1024
-#define NUM_THREADS 12
+#define NUM_THREADS 16
+std::mutex mtx;
 
 //get microsecond time
 class Timer{
@@ -19,7 +20,7 @@ class Timer{
         ~Timer(){
             auto end = std::chrono::high_resolution_clock::now();
             auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
-            std::cout << "Time taken by function: " << duration.count() << " microseconds" << std::endl;
+            std::cout << "Time taken by program: " << duration.count() << " microseconds" << std::endl;
         }
     private:
         std::chrono::time_point<std::chrono::high_resolution_clock> start;
@@ -59,6 +60,7 @@ void matrixMultiply(double** a, double** b, double** result, int size, int start
  * @param end ending row of Result
 */
 void matrixSum(double** result, double& sum, int size, int start, int end){
+    mtx.lock();
     //row of result
     for (int i = start; i < end; i++){
         //column of result
@@ -66,8 +68,10 @@ void matrixSum(double** result, double& sum, int size, int start, int end){
             sum += result[i][j];
         }
     }
+    mtx.unlock();
 }
 void matrixSdNumerator(double** result, double& rSdNumerator, int size, double mean, int start, int end){
+    mtx.lock();
     //row of result
     for (int i = start; i < end; i++){
         //column of result
@@ -75,6 +79,7 @@ void matrixSdNumerator(double** result, double& rSdNumerator, int size, double m
             rSdNumerator += (result[i][j] - mean)*(result[i][j] - mean);
         }
     }
+    mtx.unlock();
 }
 
 int main(void){
@@ -101,6 +106,7 @@ int main(void){
     //         }
     //     }
     // }
+    Timer* timer = new Timer();
     //multi-threaded matrix multiplication
     for (int i = 0; i < NUM_THREADS; i++){
         //for each thread, set start
@@ -115,8 +121,6 @@ int main(void){
         else
             std::cout << "ths[" << i << "] is not joinable" << std::endl;
     }
-    std::this_thread::yield();
-
 
     //end of multi-threaded matrix multiplication
     //element number
@@ -131,12 +135,12 @@ int main(void){
 
     // for (int i = 0; i < MATRIX_SIZE; i++){
     //     for (int j = 0; j < MATRIX_SIZE; j++){
-    //         sum += result[i][j];
+    //         sum = result[i][j] + sum;
     //     }
     // }
     // for (int i = 0; i < MATRIX_SIZE; i++){
     //     for(int j = 0; j < MATRIX_SIZE; j++){
-    //         sdNumerator += (result[i][j] - mean)*(result[i][j] - mean);
+    //         sdNumerator = (result[i][j] - mean)*(result[i][j] - mean) + sdNumerator;
     //     }
     // }
     
@@ -167,7 +171,6 @@ int main(void){
         else
             std::cout << "ths3[" << i << "] is not joinable" << std::endl;
     }
-    std::this_thread::yield();
 
     //print matrix result
     print2d("resulting matrix", result, MATRIX_SIZE, MATRIX_SIZE);
@@ -178,6 +181,7 @@ int main(void){
     
     //sd
     std::cout << "sd: " << std::sqrt(sdNumerator/elementNum) << std::endl;
+    delete timer;
     //write matrix result
     write2d("result.mat", result, MATRIX_SIZE, MATRIX_SIZE);
     //free memory
