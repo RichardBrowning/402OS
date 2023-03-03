@@ -174,6 +174,8 @@ int main(void){
 
     //print matrix result
     print2d("resulting matrix", result, MATRIX_SIZE, MATRIX_SIZE);
+    //number of elements
+    std::cout << "number of elements: " << elementNum << std::endl;
     //sum and mean
     std::cout << "sum: " << sum << std::endl;
     mean = sum/elementNum;
