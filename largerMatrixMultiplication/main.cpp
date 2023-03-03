@@ -8,7 +8,7 @@
 #include "matrix.h"
 
 #define MATRIX_SIZE 2048
-#define NUM_THREADS 16
+#define NUM_THREADS 6
 std::mutex mtx;
 
 //get microsecond time
